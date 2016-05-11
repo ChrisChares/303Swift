@@ -2,44 +2,59 @@
  [Previous](@previous)
 
  ## Error Handling
- ### Or: Manual error propogation sucks
+ ### Or: Stop worrying and love the automatic propagation
  
  Swift error handling is:
- + Automatily Propogated
- + Statically Typed
- + Explicit
- + Dad?
+ + Automatically propagated
+ + Typed
+ + Marked
+ 
+ Obj-C error handling is:
+ + A shitshow
+ + Manually propogated
+ + Typed
+ + Marked
+ 
+And that's just `NSError`, let's pretend `NSException` doesn't exist.
+ 
+Chris Lattner wrote a very, very good treatise on _why_ Swift Error handling is the way it is.  If you want to understand where Swift fits into the wider world of programming language error handling, [read it](https://github.com/apple/swift/blob/master/docs/ErrorHandlingRationale.rst)
 
+Swift errors are an empty protocol `ErrorType` which `NSError` adheres to for backwards compatibility
+ 
+[Way more than you ever wanted to know about the NSError / ErrorType bridge](https://realm.io/news/testing-swift-error-type/)
 
-//: Deep dive https://realm.io/news/testing-swift-error-type/
-//: The best damn thing on error handling you'll ever read https://github.com/apple/swift/blob/master/docs/ErrorHandlingRationale.rst
-
- Swift errors are an empty protocol `ErrorType` which NSError adheres to for backwards compatibility
- An Error consists of 2 things
+An Error consists of (at minimum) 2 things
  + Domain
  + Code
+
+The values of domain and code are obvious with NSError
 */
-//: The values of domain and code are obvious with NSError
 import Foundation
 scope {
     let error = NSError(domain: NSURLErrorDomain, code: 337, userInfo: nil)
 }
-//: With a native Swift error, the enum type becomes the Domain and the enum case becomes the Code
-//: Domain: CustomError, Code: Random
+/*:
+ When we create error types in Swift, we create enums that adhere to ErrorType. In this case, the enum type becomes the Domain and the enum case becomes the Code.
+ 
+Domain: CustomError, Code: Random
+*/
 enum CustomError : ErrorType {
     case Random
     case Specific(message: String)
 }
-//: Functions that can throw are marked as such.  A function that `throws` can throw any kind of ErrorType
+//: Functions that can throw are marked as such in their declaration.  A function that `throws` can throw any kind of ErrorType
 func throwsError(input: Int) throws {
     if input % 7 == 0 {
-        throw CustomError.Random
+        throw CustomError.Specific(message: "Divisible by 7.  Don't do that")
     }
     else if input % 5 == 0 {
         throw CustomError.Specific(message: "Divisible by 5.  Don't do that")
     }
+    else if input == 1337 {
+        throw NSError(domain: "com.sourcechode", code: 1337, userInfo: nil)
+    }
     else {
-        throw NSError(domain: "com.test.test", code: 307, userInfo: nil)
+        throw CustomError.Random
     }
 }
 /*: 
