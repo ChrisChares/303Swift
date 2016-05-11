@@ -1,11 +1,8 @@
-//: [Previous](@previous)
-//: # All Together Now
-
-//: typealias's help with readability
-typealias JSON = [String: AnyObject]
-typealias JSONArray = [JSON]
-
-//: We use '!' to indicate that these are assertions.  Such resources are packaged at build time into the app (or playground's) immutable resource bundle.  Nil or any error would represent a programmer error that should be fixed immediately
+/*:
+ [Previous](@previous)
+ ## All Together Now
+ ### Type safe, error driven JSON parsing
+*/
 import Foundation
 
 let path = NSBundle.mainBundle().pathForResource("data", ofType: "json")!

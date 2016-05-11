@@ -1,13 +1,12 @@
 /*:
  ## Optionals
- ### Or: Why nil everywhere might have been a really bad idea
+ ### Or: Why nil everywhere might have actually been a really bad idea
  
- http://programmers.stackexchange.com/questions/12777/are-null-references-really-a-bad-thing
++ [Are null references really a bad thing?](http://programmers.stackexchange.com/questions/12777/are-null-references-really-a-bad-thing)
++ [Null References: The Billion Dollar Mistake](http://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare)
  
- http://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare
+Swift variables cannot be nil without being explicitly marked for that possibility.  Enter the optional.
 */
-
-//: Swift variables cannot be nil without being explicitly marked for that possibility.  Enter the optional.
 //scope { let a : Int = nil } //Nil cannot initialize specified type 'Int'
 scope { let a : Int? = 42 }
 scope { let a : Int? = nil }
@@ -46,7 +45,7 @@ scope {
         print(integer) // Never executed because optionalInteger is nil
     }
 }
-//: Sometimes a mere nil check is insufficient.  Enter the `where` clause
+//: Sometimes a mere nil check is insufficient validation.  Enter the `where` clause
 scope {
     let optionalString: String? = "Hello"
     if let string = optionalString where string.characters.count > 0 {
@@ -71,7 +70,7 @@ scope {
 */
 scope {
     let a: Int! = 42
-    print(a) // "42"
+    print(a) // "42" NOT "Optional(42)"
 }
 scope {
     let a: Int! = nil
@@ -83,4 +82,4 @@ class ViewController : UIViewController {
     // You'll see this a lot
     @IBOutlet var tableView: UITableView!
 }
-//: The rules for class initialization demand that all non optional variables are initialized before exiting the `init()` function.  The NIB/Storyboard view controller loading process doesn't work like this however.  It will initialize the view controller via `initWithDecoder`, *then* connect the outlets.  Thus we make an *assumption* (remember !) that by the time we are interacting with our view controller code, `tableView` will never be nil.  If it does happen to be nil, we want an immediate crash to indicate we set up our outlets wrong.  
+//: The rules for class initialization demand that all non optional variables are initialized before exiting the `init()` function.  The NIB/Storyboard view controller loading process doesn't work like this however.  It will initialize the view controller via `initWithCoder`, *then* connect the outlets.  Thus we make an *assumption* (remember !) that by the time we are interacting with our view controller code, `tableView` will never be nil.  If it does happen to be nil, we want an immediate crash to indicate we set up our outlets wrong.  
