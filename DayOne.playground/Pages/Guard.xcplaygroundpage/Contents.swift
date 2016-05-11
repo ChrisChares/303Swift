@@ -2,7 +2,8 @@
 
 import Foundation
 
-
+//: # Guard
+//: ### Minimal Magic, Maximum Readability
 
 
 

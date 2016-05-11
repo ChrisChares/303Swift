@@ -3,8 +3,9 @@
     <pages>
         <page name='Introduction'/>
         <page name='Optionals'/>
-        <page name='Types'/>
+        <page name='Type Casting'/>
         <page name='Error Handling'/>
         <page name='Guard'/>
+        <page name='All together Now'/>
     </pages>
 </playground>
