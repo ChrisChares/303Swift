@@ -3,29 +3,34 @@
 
 ## Generics 
 ### For Fun and Profit
+ 
+ *From the Swift Book:*
+ 
+ Generic code enables you to write flexible, reusable functions and types that can work with any type, subject to requirements that you define. You can write code that avoids duplication and expresses its intent in a clear, abstracted manner.
+ 
+ Generics are one of the most powerful features of Swift, and much of the Swift standard library is built with generic code. In fact, you’ve been using generics throughout the Language Guide, even if you didn’t realize it. For example, Swift’s Array and Dictionary types are both generic collections. You can create an array that holds Int values, or an array that holds String values, or indeed an array for any other type that can be created in Swift. Similarly, you can create a dictionary to store values of any specified type, and there are no limitations on what that type can be.
 */
 import Shared
 //: Queue's are FIFO data structures
-struct IntQueue {
-    var array = [Int]()
-    
-    mutating func push(input: Int) {
-        array.append(input)
-    }
-    
-    mutating func pop() -> Int? {
-        guard array.count > 0 else { return nil }
-        return array.removeFirst()
-    }
-}
-
 scope {
-    var queue = IntQueue()
+    struct Queue {
+        var array = [Int]()
+        
+        mutating func push(input: Int) {
+            array.append(input)
+        }
+        
+        mutating func pop() -> Int? {
+            guard array.count > 0 else { return nil }
+            return array.removeFirst()
+        }
+    }
+    
+    var queue = Queue()
     queue.push(15)
-    queue.pop()
-    queue.pop()
+    queue.pop() //15
+    queue.pop() //nil
 }
-
 //: Generic Queue
 struct Queue<T> {
     var array = [T]()

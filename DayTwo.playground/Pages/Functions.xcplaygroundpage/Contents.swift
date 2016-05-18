@@ -6,6 +6,8 @@
  + Functions
  + Generics
  + More Functions
+
+ Stuff that will be used across days has been moved to the `Shared` project
  */
 import Shared
 /*:
@@ -23,15 +25,10 @@ scope {
     func doSomething() -> Void {}
     doSomething()
 }
-
 //: Input
 scope {
     func doSomething(input: Int) {}
     doSomething(27)
-}
-scope {
-    func doSomething(to input: Int) {}
-    doSomething(to: 27)
 }
 scope {
     func doSomething(a: Int, b: Int) {}
@@ -41,7 +38,10 @@ scope {
     func doSomething(first a: Int, second b: Int) {}
     doSomething(first: 10, second: 12)
 }
-
+scope {
+    func doSomething(to input: Int) {}
+    doSomething(to: 27)
+}
 //: Returns
 scope {
     func doSomething() -> Int {
@@ -49,3 +49,4 @@ scope {
     }
     let value = doSomething()
 }
+//: [Next](@next)

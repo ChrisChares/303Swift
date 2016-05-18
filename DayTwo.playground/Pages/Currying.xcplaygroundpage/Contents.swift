@@ -3,6 +3,10 @@
 
 ## Currying
 ### It's a thing
+ 
+**From Wikipedia**
+ 
+In mathematics and computer science, currying is the technique of translating the evaluation of a function that takes multiple arguments (or a tuple of arguments) into evaluating a sequence of functions, each with a single argument. It was introduced by Gottlob Frege, developed by Moses Schönfinkel, and further developed by Haskell Curry.
 */
 import Shared
 
@@ -33,10 +37,13 @@ scope {
     timesTen(20)
 }
 
-print("Hello")
-
 let redToBlue = curry(UIColor.interpolate)(UIColor.redColor())(UIColor.blueColor())
 
+redToBlue(0.0)
+redToBlue(0.25)
+redToBlue(0.5)
+redToBlue(0.75)
+redToBlue(1.0)
 
 import XCPlayground
 

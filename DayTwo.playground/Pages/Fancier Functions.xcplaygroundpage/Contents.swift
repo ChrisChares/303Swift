@@ -5,17 +5,17 @@
 import Shared
 //: **Pure Functions**
 scope {
-    //: One input, one output, no external state
+    //: One input, which soley determines the output.  There is no external state.
     func doSomething(input: Int) -> Int {
         return input * 2
     }
 }
 //: **Anonymous Functions**
 scope {
-    let multiplier = { (input: Int) in
-        return input * 2
+    let squared = { (input: Int) in
+        return input * input
     }
-    let four = multiplier(2)
+    let four = squared(2)
 }
 //: A **closure** is an anonymous function that captures state of the surrounding environment http://stackoverflow.com/questions/4912116/closure-vs-anonymous-function-difference
 scope {
@@ -31,7 +31,7 @@ scope {
     print("\n")
 }
 
-//: **Higher Order Functions** https://en.wikipedia.org/wiki/Higher-order_function
+//: **Higher Order Functions** are functions that either take other functions as parameters, or return functions themselves.  https://en.wikipedia.org/wiki/Higher-order_function
 scope {
     func doSomething(fn: () -> Void) {
         fn()

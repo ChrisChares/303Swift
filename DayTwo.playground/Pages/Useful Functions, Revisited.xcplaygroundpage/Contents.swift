@@ -1,7 +1,7 @@
 /*:
  [Previous](@previous)
  ## Useful Functions, revisited
- ### Or:  Implementing actually useful functions
+ ### Or:  Actually useful functions
  */
 import Shared
 //: Sample Data
@@ -25,7 +25,7 @@ scope {
     let ruths = filter(users) {
         return $0["first_name"] as? String == "Ruth"
     }
-    print("Found \(ruths.count) Ruths")
+    print("Found \(ruths.count) Ruths by filtering")
 }
 /*:
  -----
@@ -42,8 +42,8 @@ scope {
         return result
     }
     
-    let firstNames = map(users) {
-        return $0["first_name"]!
+    let ids = map(users) {
+        return $0["id"]!
     }
 }
 
@@ -51,7 +51,7 @@ scope {
 ----
  
 ## Reduce
-**Reduces** a collection to a single value
+**Reduces** a collection to a single value.  You pass it an initial value.  Then it iterates over every item in the collection, passing the current result and next object to a function.
 */
 scope {
     let emojiString = users.reduce("", combine: { (sum, user) -> String in
@@ -75,7 +75,7 @@ scope {
 
 //: Generic, Higher Order Functions can be used to solve all kinds of problems.  Here we're going to count occurances of an arbitrary object in a collection
 scope {
-    func count<T: Equatable>(xs: [T], fn: (T) -> Bool ) -> Int {
+    func count<T>(xs: [T], fn: (T) -> Bool ) -> Int {
         var count = 0
         for x in xs {
             if fn(x) {
@@ -86,6 +86,6 @@ scope {
     }
     
     let ruthsCount = count(users) { $0["first_name"] as? String == "Ruth" }
-    print("Found \(ruthsCount) with our custom count function")
+    print("Found \(ruthsCount) Ruths with our custom count function")
 }
 //: [Next](@next)
