@@ -10,6 +10,7 @@
 		8377D0151CEC0B7900A26883 /* Shared.h in Headers */ = {isa = PBXBuildFile; fileRef = 8377D0141CEC0B7900A26883 /* Shared.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8377D01C1CEC0B7900A26883 /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8377D0111CEC0B7900A26883 /* Shared.framework */; };
 		8377D0211CEC0B7900A26883 /* SharedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8377D0201CEC0B7900A26883 /* SharedTests.swift */; };
+		8377D02C1CEC172800A26883 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8377D02B1CEC172800A26883 /* Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		8377D01B1CEC0B7900A26883 /* SharedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SharedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8377D0201CEC0B7900A26883 /* SharedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTests.swift; sourceTree = "<group>"; };
 		8377D0221CEC0B7900A26883 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8377D02B1CEC172800A26883 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 		8377D0131CEC0B7900A26883 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				8377D02B1CEC172800A26883 /* Helpers.swift */,
 				8377D0141CEC0B7900A26883 /* Shared.h */,
 				8377D0161CEC0B7900A26883 /* Info.plist */,
 			);
@@ -194,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8377D02C1CEC172800A26883 /* Helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

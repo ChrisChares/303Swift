@@ -1,4 +1,5 @@
-/*: 
+import Shared
+/*:
  [Previous](@previous)
  
  ## Type Casting
