@@ -1,16 +1,23 @@
-//: [Previous](@previous)
-
+/*:
+ [Previous](@previous)
+ ## Fancier Functions
+*/
 import Shared
-
-//: Anonymous Function
+//: **Pure Functions**
+scope {
+    //: One input, one output, no external state
+    func doSomething(input: Int) -> Int {
+        return input * 2
+    }
+}
+//: **Anonymous Functions**
 scope {
     let multiplier = { (input: Int) in
         return input * 2
     }
     let four = multiplier(2)
 }
-
-//: A closure is an anonymous function that captures state of the surrounding environment http://stackoverflow.com/questions/4912116/closure-vs-anonymous-function-difference
+//: A **closure** is an anonymous function that captures state of the surrounding environment http://stackoverflow.com/questions/4912116/closure-vs-anonymous-function-difference
 scope {
     var i = 0
     let iterate = { () -> Int in
@@ -24,40 +31,37 @@ scope {
     print("\n")
 }
 
-//: Higher Order Functions https://en.wikipedia.org/wiki/Higher-order_function
+//: **Higher Order Functions** https://en.wikipedia.org/wiki/Higher-order_function
 scope {
-    func doSomething(fn: () -> Void) { fn() }
-    doSomething({
+    func doSomething(fn: () -> Void) {
+        fn()
+    }
+    doSomething({ () -> Void in
         //wait this looks suspiciously familiar...
     })
 }
 
-
-func oneTwoThree(fn: (Int) -> Void) {
-    for i in 1...3 {
+//: Functions-as-Parameters syntax
+func doSomething(times times: Int, fn:(Int) -> Void) {
+    for i in 0..<times {
         fn(i)
     }
 }
 
-oneTwoThree({ (input: Int) in
-    print(input)
+doSomething(times: 1, fn: { (i: Int) -> Void in
+    print("Hello \(i)")
 })
 print("\n")
 
-oneTwoThree { (input: Int) in
-    print(input + 1)
+doSomething(times: 2) { (i: Int) -> Void in
+    print("Hello \(i)")
 }
 print("\n")
 
-oneTwoThree { input in
-    print(input + 2)
+doSomething(times: 3) { i in
+    print("Hello \(i)")
 }
 print("\n")
 
-oneTwoThree { print($0 + 3) }
-print("\n")
-
-
-
-
+doSomething(times: 4) { print("Hello \($0)") }
 //: [Next](@next)

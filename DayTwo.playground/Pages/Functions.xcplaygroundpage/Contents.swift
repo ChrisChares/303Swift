@@ -1,7 +1,16 @@
-//: Playground - noun: a place where people can play
+/*:
+ 
+ # 303Swift
+ ## Day Two
+ 
+ + Functions
+ + Generics
+ + More Functions
+ */
 import Shared
-
-//: All the same
+/*:
+ ## Basic Syntax
+*/
 scope {
     func doSomething() {}
     doSomething()
@@ -23,6 +32,14 @@ scope {
 scope {
     func doSomething(to input: Int) {}
     doSomething(to: 27)
+}
+scope {
+    func doSomething(a: Int, b: Int) {}
+    doSomething(1, b: 2)
+}
+scope {
+    func doSomething(first a: Int, second b: Int) {}
+    doSomething(first: 10, second: 12)
 }
 
 //: Returns

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		832E022C1CED120F00FB1A99 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 832E022B1CED120F00FB1A99 /* data.json */; };
 		8377D0151CEC0B7900A26883 /* Shared.h in Headers */ = {isa = PBXBuildFile; fileRef = 8377D0141CEC0B7900A26883 /* Shared.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8377D01C1CEC0B7900A26883 /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8377D0111CEC0B7900A26883 /* Shared.framework */; };
 		8377D0211CEC0B7900A26883 /* SharedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8377D0201CEC0B7900A26883 /* SharedTests.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		832E022B1CED120F00FB1A99 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		8377D0111CEC0B7900A26883 /* Shared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Shared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8377D0141CEC0B7900A26883 /* Shared.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shared.h; sourceTree = "<group>"; };
 		8377D0161CEC0B7900A26883 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 		8377D0131CEC0B7900A26883 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				832E022B1CED120F00FB1A99 /* data.json */,
 				8377D02B1CEC172800A26883 /* Helpers.swift */,
 				8377D0141CEC0B7900A26883 /* Shared.h */,
 				8377D0161CEC0B7900A26883 /* Info.plist */,
@@ -180,6 +183,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				832E022C1CED120F00FB1A99 /* data.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +386,7 @@
 				8377D0271CEC0B7900A26883 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8377D0281CEC0B7900A26883 /* Build configuration list for PBXNativeTarget "SharedTests" */ = {
 			isa = XCConfigurationList;
@@ -390,6 +395,7 @@
 				8377D02A1CEC0B7900A26883 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
