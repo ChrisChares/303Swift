@@ -2,6 +2,10 @@
 public func scope(fn:() -> Void) {
     fn()
 }
+public func printScope(fn:() -> Void) {
+    fn()
+    print("\n")
+}
 
 //: typealias's help with readability
 public typealias JSON = [String: AnyObject]
