@@ -8,6 +8,8 @@
  + Extensions
  + Protocols
  
+ Wifi Password: g0ldenTr1angle
+ 
  [Swift book on enums](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Enumerations.html#//apple_ref/doc/uid/TP40014097-CH12-ID145)
  
  An enumeration defines a common type for a group of related values and enables you to work with those values in a type-safe way within your code.
@@ -19,16 +21,14 @@ printScope {
     enum Device {
         case iPhone
         case iPad
+        case Watch
     }
 //: They are iterated with switch statements
     let type = Device.iPhone
-    switch type {
-    case .iPhone:
-        print("iPhone")
-    case .iPad:
-        print("iPad")
-    }
+    
+
 }
+print("")
 //: They can be backed with a raw value
 printScope {
     enum Device : String {
@@ -45,7 +45,7 @@ printScope {
         case HI = "hi"
         case NM = "nm"
         case NY = "ny"
-        
+
         var name: String {
             switch self {
             case .CO: return "Colorado"
@@ -55,6 +55,10 @@ printScope {
             }
         }
     }
+    
+    let aState = State.CO
+    
+    let otherState: State = .CO
     
     let state: State = .CO
     print(state.rawValue)
@@ -79,8 +83,8 @@ printScope {
 //: Enums work great for errors
 printScope {
     enum APIError: ErrorType {
-        case NotFound
         case ParsedError(code: Int, message: String)
+        case NotFound
     }
     
     func doNetworking() throws {}
@@ -95,5 +99,29 @@ printScope {
         print("Unknown Error")
     }
 }
+
+printScope {
+//    for i in 1...100 {
+//        if i % 15 == 0 {
+//            print("FizzBuzz")
+//        } else if i % 3 == 0 {
+//            print("Fizz")
+//        } else if i % 5 == 0 {
+//            print("Buzz")
+//        } else {
+//            print(i)
+//        }
+//    }
+    
+    for i in 1...100 {
+        switch (i%3, i%5) {
+        case (0, 0): print("FizzBuzz")
+        case (0, _): print("Fizz")
+        case (_, 0): print("Buzz")
+        default: print(i)
+        }
+    }
+}
+
 
 //: [Next](@next)

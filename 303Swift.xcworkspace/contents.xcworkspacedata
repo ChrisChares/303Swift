@@ -13,4 +13,7 @@
    <FileRef
       location = "group:DayThree.playground">
    </FileRef>
+   <FileRef
+      location = "group:Shared/../CrimeMapper/CrimeMapper.xcodeproj">
+   </FileRef>
 </Workspace>

@@ -21,6 +21,11 @@ protocol Vocal {
 protocol Flying {
     func fly()
 }
+extension Flying {
+    func fly() {
+        print("Flap flap flap")
+    }
+}
 //: Animal subclasses
 class Dog : Pet, Vocal {
     func vocalize() {
@@ -31,12 +36,17 @@ class Parakeet : Pet, Vocal, Flying {
     func vocalize() {
         print("Parakeet goes SQUAAAAK")
     }
-    func fly() {
-        print("Parakeet flap flap flaps away")
-    }
 }
 printScope {
+    
+    let fido = Dog(name: "Fido")
+    print(fido.name)
+    fido.vocalize()
+    
     let pets: [Pet] = [Dog(name: "Fido"), Parakeet(name: "Flappy")]
+    for pet in pets {
+        print(pet.name)
+    }
     
     let vocalPets = pets.isFilter() as [Vocal]
     let flyingPets = pets.isFilter() as [Flying]
@@ -53,6 +63,11 @@ printScope {
 
 
 //: ### Utilizing Existing Protocols
+protocol Sample {
+    var whatAmI: String { get set }
+}
+
+
 class Note {
     let author: String
     let message: String
@@ -61,16 +76,17 @@ class Note {
         self.author = author
         self.message = message
     }
+    
 }
 
 let note = Note(author: "Rick Sanchez", message: "Get: Crystals, Meeseeks Box, Whiskey")
-print(note)
 
-//extension Note : CustomStringConvertible {
-//    var description: String {
-//       return "\(author)'s Note\n\(message)"
-//    }
-//}
+extension Note : CustomStringConvertible {
+    var description: String {
+       return "\(author)'s Note\n\(message)"
+    }
+}
+print(note)
 
 class LocatedNote : NSObject {
     let author: String
@@ -85,11 +101,21 @@ class LocatedNote : NSObject {
         latitude = lat
         longitude = lon
     }
+    
+    override var description: String {
+        return "YOLO"
+    }
 }
 
 let locatedNote = LocatedNote(author: "Rick Sanchez", message: "Crystals, Meeseeks Box, Whiskey", lat: 39.742043, lon: -104.991531)
 
 import MapKit
+
+protocol Annotation {
+    var coordinate: CLLocationCoordinate2D { get }
+    var title: String? { get }
+}
+
 
 extension LocatedNote : MKAnnotation {
     var coordinate: CLLocationCoordinate2D {
@@ -102,7 +128,30 @@ extension LocatedNote : MKAnnotation {
 
 import XCPlayground
 
+@objc protocol AProtocol {
+    func doSomething()
+    optional func doSomethingElse()
+}
+
+class SampleDelegate : NSObject, MKMapViewDelegate {
+    func mapViewDidFinishLoadingMap(mapView: MKMapView) {
+        print(" Map View Done")
+    }
+}
+
+let sampleDelegate = SampleDelegate()
+
+let stringURL = "http://google.com"
+
+import Foundation
+
+let url = NSURL(string: stringURL)!
+print(url.host)
+print(url.lastPathComponent)
+
+
 let mapView = MKMapView()
+mapView.delegate = sampleDelegate
 mapView.frame = CGRectMake(0, 0, 320, 320)
 mapView.addAnnotation(locatedNote)
 

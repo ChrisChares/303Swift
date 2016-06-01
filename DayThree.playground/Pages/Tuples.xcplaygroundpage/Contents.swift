@@ -5,10 +5,11 @@
 */
 import Shared
 printScope {
-    let serverResponse = (200, "Success")
-    let (code, message) = serverResponse
-    print(code)
-    print(message)
+    let serverResponse = (code: 200, message: "Success")
+    
+//    let (code, message) = serverResponse
+    print(serverResponse.code)
+    print(serverResponse.message)
 }
 //: Tuples are used all over the place, you may recognize them
 printScope {
@@ -22,8 +23,15 @@ printScope {
 }
 printScope {
     let array = ["a","b","c"]
+
+    
     for (i, value) in array.enumerate() {
         print("\(i): \(value)")
     }
+}
+
+
+func doNetworkingStuff() -> (status: Int, message: String) {
+    return (404, "Not Found")
 }
 //: [Next](@next)
